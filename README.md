@@ -1,12 +1,10 @@
 
-<img src="img/canonistia_logo.png" width="300">
+<img src="img/pokemon-logo.png" width="300">
 
-# Canonist.ia - Labelling of real estate images
+# Pokemon Classifier (1st Generation only)
 
 ## Description
-**Canonist.ia** is a project intended for the **classification of real estate images**. Applying **deep learning and transfer learning** techniques within the **PyTorch** framework, different models have been trained to be used via a **Streamlit** web application.
-
-In the web application, users can upload images and the model will predict the category of the image. The project is particularly useful for real estate professionals and property owners.
+This project is a Pokemon classifier that can identify the first generation of Pokemon. The model is trained using transfer learning with a pre-trained ResNet152 model. The dataset used is the **Pokemon-151 dataset** from Kaggle (https://www.kaggle.com/datasets/mikoajkolman/pokemon-images-first-generation17000-files). The model is trained on Google Colab and the best model is saved to be used in the Streamlit web application. The web application allows the user to upload an image of a Pokemon and the model will predict the Pokemon's name.
 
 Experiment tracking is done with **Weights and Biases** to monitor the performance of the models and to refine them.
 
@@ -22,4 +20,10 @@ To **run the Streamlit web application**, execute the following command:
 streamlit run app.py
 ```
 
-To **train different models**, modify the training.ipynb notebook and execute it. Make sure to have a Weights and Biases account to log the experiments and add the **API key** to a .env file.
+To **train different models**, modify the transfer-learning-training.ipynb notebook and execute it. Make sure to have a Weights and Biases account to log the experiments and add the **API key** to a .env file.
+
+## The model
+The weights of the best model are saved in the **models** folder. The best current model is a ResNet152 model with a final fully connected layer with 143 output units (one for each Pokemon). The model is trained with a learning rate of 0.0001 and a batch size of 32. The model is trained for 10 epochs.
+
+**Note**:
+This weights are used in the Streamlit web application to predict the Pokemon's name. But, as of now, it is not versioned on git due to its size.

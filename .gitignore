@@ -1,0 +1,18 @@
+# Ignore files in the wandb directory
+wandb/
+# Ignore .env file
+.env
+# Ignore pycache
+__pycache__/
+*.pyc
+# everything inside the tmp directory
+tmp/*
+
+# Ignore all files in the dataset directory
+dataset/train/*
+dataset/validation/*
+.jpg
+.jpeg
+.gif
+# Ignore all files in the models directory
+models/*

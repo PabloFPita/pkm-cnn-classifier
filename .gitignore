@@ -14,5 +14,3 @@ dataset/validation/*
 .jpg
 .jpeg
 .gif
-# Ignore all files in the models directory
-models/*

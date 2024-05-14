@@ -10,7 +10,7 @@ import numpy as np
 
 
 # Define the classes, they are the folder names in the dataset
-CLASSES = os.listdir('dataset/train')
+CLASSES = os.listdir('datasetTestForDeployment/train')
 
 def get_model_names(directory):
     model_names = []

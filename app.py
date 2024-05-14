@@ -26,9 +26,16 @@ MODELS = get_model_names('models')
 # Function to load the saved model
 @st.cache_data()
 def load_model(model_name):
-
     model_weights = load_model_weights(model_name)
-    my_trained_model = CNN(torchvision.models.resnet152(weights='DEFAULT'), 143) # 15 different classes
+    # If the model name contains resnet152, then we load the resnet152 model
+    if 'resnet152' in model_name:
+        my_trained_model = CNN(torchvision.models.resnet152(weights='DEFAULT'), 143) # 15 different classes
+    if 'resnet50' in model_name:
+        my_trained_model = CNN(torchvision.models.resnet50(weights='DEFAULT'), 143)
+
+    else:
+        my_trained_model = CNN(torchvision.models.resnet152(weights='DEFAULT'), 143)
+        
     my_trained_model.load_state_dict(model_weights)
 
     return my_trained_model

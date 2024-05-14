@@ -32,10 +32,9 @@ def load_model(model_name):
         my_trained_model = CNN(torchvision.models.resnet152(weights='DEFAULT'), 143) # 15 different classes
     if 'resnet50' in model_name:
         my_trained_model = CNN(torchvision.models.resnet50(weights='DEFAULT'), 143)
-
     else:
         my_trained_model = CNN(torchvision.models.resnet152(weights='DEFAULT'), 143)
-        
+
     my_trained_model.load_state_dict(model_weights)
 
     return my_trained_model
@@ -52,11 +51,7 @@ def translate_output_class(output_class: int):
 
 
 def main():
-    # Initialize the session state
-    st.session_state['image_name'] = None
-    st.session_state['save_path'] = None
     st.session_state['model_name'] = "resnet152-10epochs-15unfreezedlayers.pt"
-
 
     # Page configuration
     favicon_path = "img/pokemon-logo.png" # Path to the favicon 
@@ -73,14 +68,12 @@ def main():
 
     # Choose a model
     st.write(f"<h2> 1️⃣ Choose a model</h2>", unsafe_allow_html=True)
-    model_name = st.selectbox("", MODELS)
+    model_name = st.selectbox("Models:", MODELS, label_visibility="collapsed")
 
     # Upload image
     st.write(f"<h2> 2️⃣ Upload your image</h2>", unsafe_allow_html=True)
-    uploaded_file = st.file_uploader("", type=['png', 'jpg', 'jpeg'])
+    uploaded_file = st.file_uploader("Pokemon image", type=['png', 'jpg', 'jpeg'], label_visibility="collapsed")
     
-    # st.write(f"The possible classes are: {CLASSES}")
-    # st.write(f"We have {len(CLASSES)} classes in total.")
     if uploaded_file is not None:
         # Display the uploaded image
         image = Image.open(uploaded_file)
